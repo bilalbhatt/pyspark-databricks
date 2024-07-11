@@ -1,0 +1,3 @@
+file = [(1,"bilal"),(2,"Bhat"),(3,"Ahmad")]
+df= spark.createDataFrame(data=file, schema=['id', 'name'])  //here the schema will add column names, without mentioning schema we will get data without coulmn names
+df.show()

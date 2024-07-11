@@ -1,2 +1,6 @@
-df=spark.read.csv(path='dbfs:/FileStore/file1.csv')  // upload a csv file in dbfs and copy the path and then paste here
+df=spark.read.csv(path='dbfs:/FileStore/file1.csv') 
+// upload a csv file in dbfs and copy the path and then paste here
+//it will display all the data and will create extra column names like a1 a2 a3 a4
+//to display only our column names we have to mention ,,,,, header=true besides the path
+df=spark.read.csv(path='dbfs:/FileStore/file1.csv', header=True) 
 display(df)

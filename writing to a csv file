@@ -4,3 +4,7 @@ schema= ['id','name']
 df=spark.createDataFrame(data=data,schema=schema)
 display(df)
 df.write.csv(path='dbfs:/emp',header=True)   // this will create a csv file in dbfs with emp file name
+
+
+df.write.csv(path='dbfs:/emp',header=True, mode='append')// it will add data to the existing file and will display new and old data
+df.write.csv(path='dbfs:/emp',header=True, mode='overwrite') // it will remove data and will show only the existing/old orignal data in file

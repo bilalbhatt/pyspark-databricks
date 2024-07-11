@@ -1,0 +1,6 @@
+from pyspark.sql import *
+data = [(1, 'Bilal bhat'),(2,"mohd zain")]
+schema= ['id','name']
+df=spark.createDataFrame(data=data,schema=schema)
+display(df)
+df.write.csv(path='dbfs:/emp',header=True)   // this will create a csv file in dbfs with emp file name

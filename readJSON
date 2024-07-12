@@ -1,0 +1,4 @@
+df = spark.read.json(path='dbfs:/FileStore/hi.json') 
+// to avoid errors of record not found write multiline = True
+df.printSchema()
+display(df)

@@ -1,0 +1,30 @@
+withColumn is a transformation function of dataframe which is used to change the value, convert the datatype of the existimg value, create a new cloumn and many more.
+
+data = [(1,'bilal', 30000),
+        (2,'raja', 20000)]
+column = ['id, 'name', 'sal']
+
+df = spark.createDataFrame(data=data, scheme=column)  
+df.show()   
+df.printchema()  will give 
+root
+ |-- id: long (nullable = true)
+ |-- name: string (nullable = true)
+ |-- sal: long (nullable = true)
+
+to change the data type f any column or to add a column we will use withColumn
+
+// from pyspark.sql.functions import col to deal with column
+
+df1 = df.withColumn(colName='sal', col=col('sal').cast('integer'))
+
+to change the column values 
+
+
+df1 = df1.withColumn('sal', col('sal')*2)
+
+
+
+/from pyspark.sql.functions import lit to work with literal
+to add a new column
+df1 = df.withColumn('country', lit('brazil')

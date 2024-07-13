@@ -1,0 +1,8 @@
+withColumnrenamed is used to rename a column and create a new data frame
+
+data = [(1,'bilal', 30000),
+        (2,'raja', 20000)]
+column = ['id', 'name', 'sal']
+
+df = spark.createDataFrame(data=data, schema=column)
+df1= spark.withColumnRenamed('sal', 'salary')

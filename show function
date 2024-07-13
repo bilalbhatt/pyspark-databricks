@@ -1,0 +1,15 @@
+     //show will display table in tabular form
+data = [(1,'kkfskiinknfs,nlngksfngknk'),
+          2,'hhjhugugyugyyftdrsesrhjh'),
+          3,'qwertyuiosdfghjkdfghjuydfvbhjhgdfghj')]
+
+schema=['id','name']      
+df=spark.createDataFrame(data=data, schema=schema)
+df.show() // show wil by default show 20 characters only
+// to show all the characters we have to add parameter truncate = False
+df=spark.createDataFrame(data=data, schema=schema, truncate = False)
+//to show only certain characters we have to apply the truncate at that character with integer value
+df=spark.createDataFrame(data=data, schema=schema, truncate = 8)  // it will show 8 charcters
+
+//nto show table vertically apply vertical = true
+df=spark.createDataFrame(data=data, schema=schema, truncate = False, vertical = true)

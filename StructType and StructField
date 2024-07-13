@@ -1,0 +1,16 @@
+to assign the data type to a clomn
+
+
+from pyspark.sql.types import StructField, StringType
+data = [(1,'bilal', 30000),
+        (2,'raja', 20000)]
+column = StructType([StructField (name='id', dataType= IntegerType()),\
+                     StructField (name='name', dataType= StringType()),\
+                     StructField (name='sal', dataType= LongType())    
+                     ])
+
+df = spark.createDataFrame(data=data, schema=column)  
+ 
+
+df.show() 
+df.printSchema()  

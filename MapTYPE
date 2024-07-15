@@ -1,0 +1,16 @@
+from pyspark.sql.functions import *
+data= [('bilal',{'hair':'black', 'eye': 'brown'}),('bhat',{'hair':'brown', 'eye': 'blue'})]
+schema = ['name', 'properties']
+df = spark.createDataFrame(data, schema)
+df.show(truncate=False)
+
+
+output
+
++-----+-----------------------------+
+|name |properties                   |
++-----+-----------------------------+
+|bilal|{eye -> brown, hair -> black}|
+|bhat |{eye -> blue, hair -> brown} |
++-----+-----------------------------+
+

@@ -1,0 +1,20 @@
+
+from pyspark.sql.functions import map_keys
+from pyspark.sql.types import *
+ 
+
+data = [(1,{'name':'Bilal', 'caste':'Bhat'}), (2,{'name':'zeeyan', 'caste':'rather'})] 
+schema= ['serial', 'bio']
+df = spark.createDataFrame(data, schema)
+df1 = df.withColumn('keys', map_keys(df.bio))
+df1.show(truncate=False)
+
+ 
+df:pyspark.sql.dataframe.DataFrame = [serial: long, bio: map]
+df1:pyspark.sql.dataframe.DataFrame = [serial: long, bio: map ... 1 more field]
++------+---------------------------------+-------------+
+|serial|bio                              |keys         |
++------+---------------------------------+-------------+
+|1     |{name -> Bilal, caste -> Bhat}   |[name, caste]|
+|2     |{name -> zeeyan, caste -> rather}|[name, caste]|
++------+---------------------------------+-------------+

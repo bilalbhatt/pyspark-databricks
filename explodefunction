@@ -1,0 +1,22 @@
+from pyspark.sql.functions import *
+from pyspark.sql.types import *
+ /// explode function will print keya nd value of dic seperately
+
+data = [(1,{'name':'Bilal', 'caste':'Bhat'}), (2,{'name':'zeeyan', 'caste':'rather'})] 
+schema= ['serial', 'bio']
+df = spark.createDataFrame(data, schema)
+df1 = df.select('serial', 'bio',  explode(df.bio))
+df1.show(truncate= False)
+
+
+
+df:pyspark.sql.dataframe.DataFrame = [serial: long, bio: map]
+df1:pyspark.sql.dataframe.DataFrame = [serial: long, bio: map ... 2 more fields]
++------+---------------------------------+-----+------+
+|serial|bio                              |key  |value |
++------+---------------------------------+-----+------+
+|1     |{name -> Bilal, caste -> Bhat}   |name |Bilal |
+|1     |{name -> Bilal, caste -> Bhat}   |caste|Bhat  |
+|2     |{name -> zeeyan, caste -> rather}|name |zeeyan|
+|2     |{name -> zeeyan, caste -> rather}|caste|rather|
++------+---------------------------------+-----+------+

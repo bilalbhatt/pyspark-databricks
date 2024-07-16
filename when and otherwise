@@ -1,0 +1,23 @@
+other wise is simiiar to else
+
+
+from pyspark.sql.functions import *
+from pyspark.sql.types import *
+ 
+
+data = [(1,'Bilal', 'Bhat','working prof'), (2,'zeeyan', 'rather', 'stud')] 
+schema= ['serial', 'name', 'caste', 'occ' ]
+df = spark.createDataFrame(data, schema)
+
+df.select(df.serial, df.caste, when(df.caste=='rather', 'tekipora wala').otherwise('gundi wala')).show()
+df.show(truncate= False)
+
+
+
+
++------+------+-----------------------------------------------------------------+
+|serial| caste|CASE WHEN (caste = rather) THEN tekipora wala ELSE gundi wala END|
++------+------+-----------------------------------------------------------------+
+|     1|  Bhat|                                                       gundi wala|
+|     2|rather|                                                    tekipora wala|
++------+------+-----------------------------------------------------------------+

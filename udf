@@ -1,0 +1,14 @@
+updating the salary with user defined functions
+
+
+from pyspark.sql.functions import *
+from pyspark.sql.types import *
+data = [(1, 'Bilal', 45000, 23000), (2,'bhat', 23000, 14000)]
+schema = ['id', 'name', 'salary', 'bonus']
+df= spark.createDataFrame(data,schema)
+df.show()
+
+def totalSal(s,b):
+    return s+b
+total= udf(lambda s,b: totalSal(s,b))  
+df.withColumn('totalSalary', total(df.salary, df.bonus)).show() 

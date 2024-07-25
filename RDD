@@ -1,0 +1,8 @@
+RDD is the resilient distributed data set which is similar to a list in python, it is actually collection of objects. it is distributed over multiple nodes in a cluster.
+
+
+this is how we can convert a list of tuples to a rdd
+
+data =[(1,"bilal"), (2,"bhatt")]
+rdd=spark.sparkContext.parallelize(data)
+type(rdd)

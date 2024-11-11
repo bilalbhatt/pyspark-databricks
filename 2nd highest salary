@@ -1,0 +1,25 @@
+
+
+from pyspark.sql import SparkSession
+from pyspark.sql import functions as F
+
+# Create SparkSession
+spark = SparkSession.builder.appName("Salary Analysis").getOrCreate()
+
+# Create sample DataFrame
+data = [
+    ("John", 50000),
+    ("Alice", 60000),
+    ("Bob", 40000),
+    ("Mary", 70000),
+    ("David", 55000)
+]
+df = spark.createDataFrame(data, ["Name", "Salary"])
+
+# Sort DataFrame by Salary in descending order
+df_sorted = df.sort(F.col("Salary").desc())
+
+# Get 2nd highest salary
+second_highest_salary = df_sorted.limit(2).tail(1).Salary
+
+print("2nd Highest Salary:", second_highest_salary)
